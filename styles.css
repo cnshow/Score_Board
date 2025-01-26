@@ -1,0 +1,190 @@
+/* Custom styles on top of Bootstrap */
+body {
+    font-family: Arial, sans-serif;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+}
+
+/* Runner button styles */
+.runner-buttons {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.runner-btn {
+    flex: 1;
+    min-width: 0;
+    padding: 12px 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    border-width: 2px;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.runner-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Position-based colors for buttons */
+.runner-btn[data-position="1"] {
+    background-color: #FF9999;
+    border-color: #FF7777;
+    color: black;
+}
+
+.runner-btn[data-position="2"] {
+    background-color: #99FF99;
+    border-color: #77FF77;
+    color: black;
+}
+
+.runner-btn[data-position="3"] {
+    background-color: #9999FF;
+    border-color: #7777FF;
+    color: black;
+}
+
+.runner-btn[data-position="4"] {
+    background-color: #FFFF99;
+    border-color: #FFFF77;
+    color: black;
+}
+
+/* Hover/Active effects for buttons */
+@media (hover: hover) {
+    .runner-btn:not(:disabled):hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        filter: brightness(1.05);
+    }
+}
+
+.runner-btn:not(:disabled):active {
+    transform: translateY(1px);
+    filter: brightness(0.95);
+}
+
+/* Editable cell styles */
+.reward-cell, .runner-name-cell {
+    cursor: text;
+    transition: all 0.2s ease;
+    min-width: 40px;
+    padding: 4px !important;
+    font-size: 0.9rem;
+}
+
+.reward-cell:hover, .runner-name-cell:hover {
+    background-color: #f8f9fa;
+}
+
+.reward-cell:focus, .runner-name-cell:focus {
+    outline: none;
+    background-color: #e9ecef;
+    box-shadow: inset 0 0 0 2px #0d6efd;
+}
+
+/* Invalid input styling */
+.invalid {
+    background-color: #ffebee !important;
+    border: 1px solid #dc3545;
+}
+
+/* Position-based colors for table cells */
+.runner-cell-pos-1 {
+    background-color: #FF9999 !important;
+    color: black !important;
+}
+
+.runner-cell-pos-2 {
+    background-color: #99FF99 !important;
+    color: black !important;
+}
+
+.runner-cell-pos-3 {
+    background-color: #9999FF !important;
+    color: black !important;
+}
+
+.runner-cell-pos-4 {
+    background-color: #FFFF99 !important;
+    color: black !important;
+}
+
+/* Total row styling */
+.total-row {
+    font-weight: bold;
+    background-color: #e8f5e9 !important;
+}
+
+/* Table customization */
+.table {
+    margin-bottom: 0;
+}
+
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 8px 4px;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .runner-btn {
+        padding: 8px 4px;
+        font-size: 0.9rem;
+    }
+
+    .table th, .table td {
+        padding: 6px 3px;
+        font-size: 0.85rem;
+    }
+
+    .reward-cell, .runner-name-cell {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .runner-btn {
+        padding: 6px 2px;
+        font-size: 0.8rem;
+    }
+
+    .table th, .table td {
+        padding: 4px 2px;
+        font-size: 0.8rem;
+    }
+
+    .reward-cell, .runner-name-cell {
+        font-size: 0.8rem;
+        min-width: 30px;
+    }
+}
+
+@media (max-width: 360px) {
+    .runner-btn {
+        padding: 4px 1px;
+        font-size: 0.75rem;
+    }
+
+    .table th, .table td {
+        padding: 3px 1px;
+        font-size: 0.75rem;
+    }
+
+    .reward-cell, .runner-name-cell {
+        font-size: 0.75rem;
+        min-width: 25px;
+    }
+}
