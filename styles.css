@@ -222,16 +222,23 @@ body {
 }
 
 /* Control button styles */
+.controls {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1vw;
+}
+
 .controls .btn {
-    font-size: 2rem;
-    padding: 25px 30px;  /* Increased vertical padding */
+    font-size: 4vw;  /* Responsive font size */
+    padding: 1.5vw 3vw;  /* Responsive padding */
     font-weight: bold;
-    min-width: 180px;
-    min-height: 100px;  /* Added minimum height */
+    min-width: 20vw;  /* Responsive minimum width */
+    min-height: 10vw;  /* Responsive minimum height */
+    margin: 0 2vw;  /* Responsive margin */
 }
 
 .controls .btn i {
-    font-size: 2rem;
+    font-size: 4vw;  /* Match button text size */
 }
 
 @media (hover: hover) {
