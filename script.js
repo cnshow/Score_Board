@@ -6,10 +6,10 @@ class GameScoreBoard {
         this.isGameActive = false;
         this.rankingComplete = false;
         this.rewardSettings = {
-            1: 2,
-            2: 1,
-            3: -1,
-            4: -2
+            1: 20,
+            2: 10,
+            3: -10,
+            4: -20
         };
 
         this.initializeEventListeners();
@@ -18,7 +18,7 @@ class GameScoreBoard {
     }
 
     initializeEventListeners() {
-        document.getElementById('newRun').addEventListener('click', () => this.handleNewRun());
+        document.getElementById('submit').addEventListener('click', () => this.handleSubmit());
         document.getElementById('reset').addEventListener('click', () => this.resetRanking());
 
         const runnerButtons = document.querySelectorAll('.runner-btn');
@@ -129,10 +129,8 @@ class GameScoreBoard {
         }
     }
 
-    handleNewRun() {
-        if (!this.isGameActive) {
-            this.startNewRun();
-        } else if (this.rankingComplete) {
+    handleSubmit() {
+        if (this.isGameActive && this.rankingComplete) {
             this.processCompletedRun();
             this.startNewRun();
         }
@@ -240,7 +238,9 @@ class GameScoreBoard {
         totalRow.classList.add('total-row');
         totalRow.innerHTML = '<td>Total</td>';
         sortedPositions.forEach(position => {
-            totalRow.innerHTML += `<td>${totals[position]}</td>`;
+            const score = totals[position];
+            const scoreClass = score < 0 ? 'negative-score' : '';
+            totalRow.innerHTML += `<td class="${scoreClass}">${score}</td>`;
         });
         tbody.appendChild(totalRow);
 
@@ -254,16 +254,19 @@ class GameScoreBoard {
             tbody.appendChild(row);
         });
 
-        // Update header with current runner names in sorted order
+        // Update header with current runner names and their positions
         const headerRow = scoreTable.querySelector('thead tr');
         headerRow.innerHTML = '<th>Run</th>';
-        sortedPositions.forEach(position => {
+        sortedPositions.forEach((position, index) => {
             const runnerIndex = position - 1;
-            headerRow.innerHTML += `<th>${this.runners[runnerIndex]}</th>`;
+            const currentRank = index + 1;  // Current rank based on total scores
+            headerRow.innerHTML += `<th>${currentRank}_${this.runners[runnerIndex]}</th>`;
         });
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     window.gameScoreBoard = new GameScoreBoard();
+    // Auto-start the game when page loads
+    window.gameScoreBoard.startNewRun();
 });
